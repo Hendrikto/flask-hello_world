@@ -1,6 +1,6 @@
-from flask import Flask
-app = Flask(__name__)
+import flask
 
+app = flask.Flask(__name__)
 visits = 0
 
 
@@ -13,4 +13,7 @@ def hello():
 def counter():
     global visits
     visits += 1
-    return f"<b>Visits:</b> {visits}"
+    return flask.render_template(
+        "counter.html",
+        visits=visits,
+    )
