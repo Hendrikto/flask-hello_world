@@ -5,7 +5,7 @@ visits = 0
 
 
 @app.route("/")
-def hello():
+def index():
     return "Hello World!"
 
 
@@ -16,4 +16,13 @@ def counter():
     return flask.render_template(
         "counter.html",
         visits=visits,
+    )
+
+
+@app.route("/hello/<name>")
+def hello(name):
+    name = name.capitalize()
+    return flask.render_template(
+        "hello.html",
+        name=name,
     )
